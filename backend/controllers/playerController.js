@@ -15,6 +15,8 @@ const getPlayer = asyncHandler(async (req, res) => {
     console.log(player)
     const playerStats = playerStatsResponse.data.stats[0].splits[0].stat;
 
+    console.log(playerStats, 'playerStats')
+
     res.status(200).json({
         id: player.id,
         team: player.currentTeam.name,

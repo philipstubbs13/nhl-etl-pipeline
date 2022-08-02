@@ -17,7 +17,7 @@ export const UiCard = (props) => (
         </Typography>
         </CardContent>
         <CardActions>
-        <Button size="small" onClick={props.onClickDetails}>Details</Button>
+        <Button size="small" onClick={props.onClickDetails}>View Stats</Button>
         </CardActions>
     </Card>
 );

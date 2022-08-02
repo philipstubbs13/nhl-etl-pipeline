@@ -6,7 +6,7 @@ export const initialState = {
   teams: [],
   selectedTeam: null,
   selectedTeamId: '',
-  selectedTeamSeason: new Date().getFullYear(),
+  selectedTeamSeason: new Date().getFullYear() - 1,
   selectedPlayer: null
 };
 

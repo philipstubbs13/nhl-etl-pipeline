@@ -5,6 +5,7 @@ import {  downloadPlayerCsv, getPlayer} from '../apiMethods';
 import { exportToCsv } from '../utils/exportToCsv';
 import { useParams } from 'react-router-dom';
 import { UiStat } from '../components/ui/ui-stat/UiStat';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 export const PlayerDetails = () => {
     const {
@@ -52,7 +53,7 @@ export const PlayerDetails = () => {
                                 <Typography variant={'h6'}>Age: {selectedPlayer.age}</Typography>
                             </Grid>
                             <Grid item={true} xs={12}>
-                                <Button size="small" onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
+                                <Button variant={'outlined'} startIcon={<FileDownloadIcon />} onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
                             </Grid>
                         </Grid>
                     </Box>
