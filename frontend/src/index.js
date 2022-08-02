@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { App } from './App';
-import { TeamContextProvider } from './context/TeamContext';
+import { NhlContextProvider } from './context/NhlContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TeamContextProvider>
+    <NhlContextProvider>
       <App />
-    </TeamContextProvider>
+    </NhlContextProvider>
   </React.StrictMode>
 );

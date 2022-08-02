@@ -1,4 +1,3 @@
-import './App.css';
 import { Container} from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import { Dashboard } from './pages/Dashboard';

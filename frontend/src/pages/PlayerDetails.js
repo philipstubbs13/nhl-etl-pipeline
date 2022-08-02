@@ -1,4 +1,4 @@
-import { useTeamContext } from '../hooks/useTeamContext';
+import { useNhlContext } from '../hooks/useNhlContext';
 import { Box, Grid, Typography, Button } from '@mui/material';
 import { useEffect } from 'react';
 import {  downloadPlayerCsv, getPlayer} from '../apiMethods';
@@ -8,40 +8,34 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { UiSelect } from '../components/ui/ui-select/UiSelect';
 import { seasonOptions } from '../constants';
+import { UiStat } from '../components/ui/ui-stat/UiStat';
+import { setSeason, setPlayer } from '../reducers/actionCreators';
 
 export const PlayerDetails = () => {
     const {
         dispatch,
         selectedPlayer,
-        selectedTeamSeason
-    } = useTeamContext();
+        selectedSeason
+    } = useNhlContext();
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         const loadPlayerDetails = async (playerId) => {
-            const response = await getPlayer(playerId, selectedTeamSeason)
+            const response = await getPlayer(playerId, selectedSeason)
     
-            dispatch({ type: 'GET_PLAYER', payload: { selectedPlayer: response }});
+            dispatch(setPlayer(response));
         };
     
         loadPlayerDetails(id);
-        }, [dispatch, id, selectedTeamSeason])
+        }, [dispatch, id, selectedSeason])
 
     const onDownloadPlayerCsv = async (playerId) => {
-        const response = await downloadPlayerCsv(playerId, selectedTeamSeason);
+        const response = await downloadPlayerCsv(playerId, selectedSeason);
         const player = response.playerData[0];
 
         exportToCsv(response.headers, response.playerData, `${player.firstName} ${player.lastName}`)
     }
-
-    const onChangePlayerSeason = async (event) => {
-        const selectedPlayerSeason = parseInt(event.target.value);
-        const response = await getPlayer(id, selectedPlayerSeason);
-
-        dispatch({ type: 'SET_PLAYER_SEASON', payload: { selectedPlayer: response, selectedTeamSeason: selectedPlayerSeason } })
-    }
-
 
     return (
         <>
@@ -53,14 +47,16 @@ export const PlayerDetails = () => {
                                 <Button sx={{ height: '40px' }} variant={'outlined'} startIcon={<ArrowBackIosIcon />} onClick={() => navigate('/')}>Back</Button>
                             </Grid>
                             <Grid item={true} xs={4}>
-                                <UiSelect label={'Select a season'} options={seasonOptions} onChange={onChangePlayerSeason} value={selectedTeamSeason} />
+                                <UiSelect label={'Select season'} options={seasonOptions} onChange={(event) => dispatch(setSeason(event.target.value))} value={selectedSeason} />
                             </Grid>
-                            <Grid item={true} xs={4}>
-                                <Button sx={{ height: '40px' }} variant={'outlined'} startIcon={<FileDownloadIcon />} onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
-                            </Grid>
+                            {selectedPlayer.firstName && (
+                                <Grid item={true} xs={4}>
+                                    <Button sx={{ height: '40px' }} variant={'outlined'} startIcon={<FileDownloadIcon />} onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
+                                </Grid>
+                            )}
                         </Grid>
                     </Box>
-                    {selectedPlayer.firstName && selectedPlayer.lastName && (
+                    {selectedPlayer.firstName && (
                         <Box marginY={4}>
                             <Grid container={true}>
                                 <Grid item={true} xs={3}>  
@@ -76,62 +72,33 @@ export const PlayerDetails = () => {
                                 </Grid>
                                 <Grid item={true} xs={9}>
                                     <Grid container={true} spacing={5}>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Team'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.team}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Position'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.position}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Age'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.age}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Assists'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.assists}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Goals'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.goals}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Games'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.games}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Hits'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.hits}</Typography>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item={true} xs={12} sm={4}>
-                                            <Typography  fontWeight={'bold'}>{'Points'}</Typography>
-                                            <Box border={'1px solid #000'} paddingY={0.5}>
-                                                <Typography textAlign={'center'}>{selectedPlayer.points}</Typography>
-                                            </Box>
-                                        </Grid>
+                                        <UiStat title={'Current Team'}>{selectedPlayer.team}</UiStat>
+                                        <UiStat title={'Primary Position'}>{selectedPlayer.position}</UiStat>
+                                        <UiStat title={'Current Age'}>{selectedPlayer.age}</UiStat>
+                                        <UiStat title={'Assists'}>{selectedPlayer.assists}</UiStat>
+                                        <UiStat title={'Goals'}>{selectedPlayer.goals}</UiStat>
+                                        <UiStat title={'Games'}>{selectedPlayer.games}</UiStat>
+                                        <UiStat title={'Hits'}>{selectedPlayer.hits}</UiStat>
+                                        <UiStat title={'Points'}>{selectedPlayer.points}</UiStat>
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Box>
                     )}
+                    {!selectedPlayer.firstName && (
+                        <Grid container={true} alignItems={'center'}>
+                            <Grid item={true} xs={12}>
+                                <Box marginTop={8}>
+                                    <Typography variant={'h6'} textAlign={'center'}>
+                                        No player data available for the {selectedSeason} season.
+                                    </Typography>
+                                    <Typography textAlign={'center'}>Try selecting a different season or go back and select another player.</Typography>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    )}
                 </>
             )}
-
         </>
     )
 }
