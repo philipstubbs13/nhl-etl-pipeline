@@ -27,6 +27,12 @@ export const teamReducer = (
           selectedTeam: action.payload.selectedTeam,
           selectedTeamSeason: action.payload.selectedTeamSeason
         }
+      case 'SET_PLAYER_SEASON':
+          return {
+            ...state,
+            selectedPlayer: action.payload.selectedPlayer,
+            selectedTeamSeason: action.payload.selectedTeamSeason
+          }
     default:
       return state;
   }

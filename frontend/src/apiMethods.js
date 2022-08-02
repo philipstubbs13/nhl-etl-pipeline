@@ -12,14 +12,14 @@ export const getTeam = async (teamId, season)=> {
     return response.data;
 };
 
-export const getPlayer = async (playerId)=> {
-    const response = await axios.get(`/api/players/${playerId}`);
+export const getPlayer = async (playerId, season)=> {
+    const response = await axios.get(`/api/players/${playerId}?season=${season}`);
 
     return response.data;
 };
 
-export const downloadPlayerCsv = async (playerId)=> {
-    const response = await axios.get(`/api/players/${playerId}/download`);
+export const downloadPlayerCsv = async (playerId, season)=> {
+    const response = await axios.get(`/api/players/${playerId}/download?season=${season}`);
   
     return response.data;
 };

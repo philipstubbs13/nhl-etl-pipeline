@@ -10,12 +10,13 @@ export const UiSelect = (props) => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="season-select">{label}</InputLabel>
+        <InputLabel id={props.label}>{label}</InputLabel>
         <Select
-          labelId="season-select"
-          id="season-select"
+          labelId={props.label}
+          id={props.label}
+          sx={{ height: '40px' }}
           value={value}
-          label="Select a Season"
+          label={label}
           onChange={props.onChange}
         >
           {options.map((option) => (
