@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Dashboard } from './pages/Dashboard';
 import { PlayerDetails } from './pages/PlayerDetails';
 import { UiNavBar } from './components/ui/ui-navbar/UiNavbar.tsx';
+import React from 'react';
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
-    <>
       <Router>
         <div className="App">
           <UiNavBar />
@@ -18,7 +18,6 @@ export const App = () => {
           </Container>
         </div>
       </Router>
-    </>
   );
 }
 

@@ -1,13 +1,13 @@
 import { useNhlContext } from '../hooks/useNhlContext.tsx';
 import { Box, Grid, Typography, Button } from '@mui/material';
 import { useEffect } from 'react';
-import {  downloadPlayerCsv, getPlayer} from '../apiMethods';
+import {  downloadPlayerCsv, getPlayer} from '../apiMethods.ts';
 import { exportToCsv } from '../utils/exportToCsv';
 import { useParams, useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { UiSelect } from '../components/ui/ui-select/UiSelect.tsx';
-import { seasonOptions } from '../constants';
+import { seasonOptions } from '../constants.ts';
 import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
 import { setSeason, setPlayer } from '../reducers/actionCreators.ts';
 
