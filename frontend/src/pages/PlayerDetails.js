@@ -35,25 +35,39 @@ export const PlayerDetails = () => {
 
     return (
         <>
-            <Box marginY={5}>
-                <Grid alignItems={'center'} container={true} spacing={2}> 
-                    <Grid item={true} xs={12}>
-                        <Typography variant={'h4'}>{selectedPlayer.name} #{selectedPlayer.number} - {selectedPlayer.position}</Typography>
-                    </Grid>
-                    <Grid item={true} xs={12}>
-                        <Button size="small" onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
-                    </Grid>
-                </Grid>
-            </Box>
-            <Paper sx={{ padding: '20px', marginY: '20px' }} square={true} variant={'outlined'}>
-                <Grid container={true} justifyContent={'center'} alignItems={'center'}>
-                    <UiStat title={'Assists'}>{2}</UiStat>
-                    <UiStat title={'Goals'}>{10}</UiStat>
-                    <UiStat title={'Games'}>{60}</UiStat>
-                    <UiStat title={'Hits'}>{20}</UiStat>
-                    <UiStat title={'Points'}>{102}</UiStat>
-                </Grid>
-            </Paper>
+            {selectedPlayer && (
+                <>
+                    <Box marginY={5}>
+                        <Grid alignItems={'center'} container={true} spacing={1}> 
+                            <Grid item={true} xs={12}>
+                                <Typography variant={'h4'}>{selectedPlayer.name} #{selectedPlayer.number}</Typography>
+                            </Grid>
+                            <Grid item={true} xs={12}>
+                                <Typography variant={'h6'}>Position: {selectedPlayer.position}</Typography>
+                            </Grid>
+                            <Grid item={true} xs={12}>
+                                <Typography variant={'h6'}>Current team: {selectedPlayer.team}</Typography>
+                            </Grid>
+                            <Grid item={true} xs={12}>
+                                <Typography variant={'h6'}>Age: {selectedPlayer.age}</Typography>
+                            </Grid>
+                            <Grid item={true} xs={12}>
+                                <Button size="small" onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                    <Paper sx={{ padding: '20px', marginY: '20px' }} square={true} variant={'outlined'}>
+                        <Grid container={true} justifyContent={'center'} alignItems={'center'}>
+                            <UiStat title={'Assists'}>{selectedPlayer.assists}</UiStat>
+                            <UiStat title={'Goals'}>{selectedPlayer.goals}</UiStat>
+                            <UiStat title={'Games'}>{selectedPlayer.games}</UiStat>
+                            <UiStat title={'Hits'}>{selectedPlayer.hits}</UiStat>
+                            <UiStat title={'Points'}>{selectedPlayer.points}</UiStat>
+                        </Grid>
+                    </Paper>
+                </>
+            )}
+
         </>
     )
 }
