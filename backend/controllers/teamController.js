@@ -1,9 +1,11 @@
 const asyncHandler = require('express-async-handler')
 const axios = require('axios');
 
+const apiBaseUrl = 'https://statsapi.web.nhl.com/api/v1/teams/';
+
 
 const getTeams = asyncHandler(async (req, res) => {
-    const response = await axios.get('https://statsapi.web.nhl.com/api/v1/teams');
+    const response = await axios.get(apiBaseUrl);
 
     const teams = response.data.teams.map((team) => ({
         id: team.id,
@@ -17,11 +19,9 @@ const getTeam = asyncHandler(async (req, res) => {
     const firstYear = parseInt(req.query.season);
     const secondYear = firstYear + 1;
 
-    const response = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${req.params.id}?expand=team.roster&expand=team.stats&expand=team.schedule&season=${firstYear}${secondYear}`);
+    const response = await axios.get(`${apiBaseUrl}${req.params.id}?expand=team.roster&expand=team.stats&expand=team.schedule&season=${firstYear}${secondYear}`);
     const team = response.data.teams[0];
     const teamStats = team.teamStats[0].splits[0].stat;
-
-    console.log(team, 'team')
 
     res.status(200).json({
         id: team.id,
@@ -41,12 +41,10 @@ const downloadTeamCsv = asyncHandler(async (req, res) => {
     const firstYear = parseInt(req.query.season);
     const secondYear = firstYear + 1;
 
-    const response = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${req.params.id}?expand=team.roster&expand=team.stats&season=${firstYear}${secondYear}`);
+    const response = await axios.get(`${apiBaseUrl}${req.params.id}?expand=team.roster&expand=team.stats&season=${firstYear}${secondYear}`);
     const team = response.data.teams[0];
     const teamStats = team.teamStats[0].splits[0].stat;
     const headers = ['ID', 'Name', 'Venue', 'Games Played', 'Wins', 'Losses', 'Points', 'Goals Per Game']
-
-    console.log(teamStats, 'teamStats')
     const teamData = [
         {
             id: team.id,

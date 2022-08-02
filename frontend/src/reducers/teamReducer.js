@@ -10,6 +10,11 @@ export const teamReducer = (
           label: team.name
         })),
       };
+      case 'GET_PLAYER':
+        return {
+          ...state,
+          selectedPlayer: action.payload.selectedPlayer
+        };
     case 'SET_TEAM':
       return {
         ...state,

@@ -3,11 +3,11 @@ import { teamReducer } from "../reducers/teamReducer";
 
 export const initialState = {
   dispatch: () => null,
-  playerCsvData: '',
   teams: [],
   selectedTeam: null,
   selectedTeamId: '',
-  selectedTeamSeason: new Date().getFullYear()
+  selectedTeamSeason: new Date().getFullYear(),
+  selectedPlayer: null
 };
 
 export const TeamContext = createContext(initialState);

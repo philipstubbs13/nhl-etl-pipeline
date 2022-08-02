@@ -1,7 +1,5 @@
 import axios from "axios";
 
-export const baseUrl = "http://localhost:5000";
-
 export const getTeams = async ()=> {
     const response = await axios.get(`api/teams`);
   
@@ -14,8 +12,14 @@ export const getTeam = async (teamId, season)=> {
     return response.data;
 };
 
+export const getPlayer = async (playerId)=> {
+    const response = await axios.get(`/api/players/${playerId}`);
+
+    return response.data;
+};
+
 export const downloadPlayerCsv = async (playerId)=> {
-    const response = await axios.get(`api/players/${playerId}/download`);
+    const response = await axios.get(`/api/players/${playerId}/download`);
   
     return response.data;
 };
