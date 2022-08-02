@@ -6,7 +6,7 @@ import { getTeam, getTeams, downloadTeamCsv } from '../apiMethods.ts';
 import { UiCard } from '../components/ui/ui-card/UiCard.tsx';
 import { seasonOptions } from '../constants.ts';
 import { exportToCsv } from '../utils/exportToCsv';
-import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
+import { UiStat } from '../components/ui/ui-stat/UiStat';
 import { useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { setTeam, setSeason, setTeams } from '../reducers/actionCreators.ts';
@@ -20,6 +20,8 @@ export const Dashboard = () => {
         selectedTeamId,
         selectedSeason,
     } = useNhlContext();
+    const selectedSeasonIndex = seasonOptions.findIndex(seasonOption => seasonOption.value === selectedSeason);
+    const selectedSeasonLabel = seasonOptions[selectedSeasonIndex].label;
 
     useEffect(() => {
         const loadTeams = async () => {
@@ -69,7 +71,7 @@ export const Dashboard = () => {
             {selectedTeam && (
                 <>
                     <Grid container={true} item={true} xs={12}>
-                        <Typography variant={'h6'} fontWeight={'bold'}>{selectedSeason} Team Stats</Typography>
+                        <Typography variant={'h6'} fontWeight={'bold'}>{selectedSeasonLabel} Team Stats</Typography>
                     </Grid>
                     <Box marginTop={2}>
                         <Grid container={true} spacing={3}>
@@ -84,7 +86,7 @@ export const Dashboard = () => {
                     <Box marginTop={4}>
                         <Grid container={true} spacing={2}>
                             <Grid item={true} xs={12}>
-                                <Typography variant={'h6'} fontWeight={'bold'}>{selectedSeason} Roster</Typography>
+                                <Typography variant={'h6'} fontWeight={'bold'}>{selectedSeasonLabel} Roster</Typography>
                             </Grid>
                             {selectedTeam && selectedTeam.roster.map((roster) => (
                                 <Grid item={true} xs={12} sm={8} md={4} lg={3}>

@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import { nhlReducer } from "../reducers/nhlReducer.ts";
 
-export const initialState= {
+export const initialState = {
   dispatch: () => null,
   selectedSeason: 20212022,
   selectedPlayer: null,

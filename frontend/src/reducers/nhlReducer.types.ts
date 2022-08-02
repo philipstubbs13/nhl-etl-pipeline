@@ -1,3 +1,5 @@
+import { IGetPlayerResponseData, IGetTeamResponseData, IGetTeamsResponseData } from "../shared.types";
+
 export type ActionMap<M extends { [index: string]: any }> = {
     [Key in keyof M]: M[Key] extends undefined
       ? {
@@ -18,9 +20,9 @@ export type ActionMap<M extends { [index: string]: any }> = {
   
   export type NhlPayload = {
     [NhlActionTypes.setTeam]: number;
-    [NhlActionTypes.setTeams]: { teams: any[], selectedTeam: any };
+    [NhlActionTypes.setTeams]: { teams: IGetTeamsResponseData[], selectedTeam: IGetTeamResponseData };
     [NhlActionTypes.setSeason]: number;
-    [NhlActionTypes.setPlayer]: { selectedPlayer: any };
+    [NhlActionTypes.setPlayer]: { selectedPlayer: IGetPlayerResponseData };
   };
   
   export type NhlActions = ActionMap<NhlPayload>[keyof ActionMap<NhlPayload>];

@@ -1,3 +1,4 @@
+import { IValueLabelOption } from "../components/ui/ui-select/UiSelect.types";
 import { NhlActions } from "../reducers/nhlReducer.types";
 
 export interface INhlContext {
@@ -6,5 +7,5 @@ export interface INhlContext {
   selectedPlayer: any;
   selectedTeam: any;
   selectedTeamId: number;
-  teams: any[];
+  teams: IValueLabelOption<number, string>[];
 }

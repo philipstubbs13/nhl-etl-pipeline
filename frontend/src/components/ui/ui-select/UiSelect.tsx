@@ -4,10 +4,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { IValueLabelOption } from './UiSelect.types';
 
 interface IProps {
   label: string;
-  options: any[];
+  options: IValueLabelOption[];
   value: string;
   onChange: (event) => void;
 }

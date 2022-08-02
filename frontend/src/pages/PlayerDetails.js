@@ -8,7 +8,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { UiSelect } from '../components/ui/ui-select/UiSelect.tsx';
 import { seasonOptions } from '../constants.ts';
-import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
+import { UiStat } from '../components/ui/ui-stat/UiStat';
 import { setSeason, setPlayer } from '../reducers/actionCreators.ts';
 
 export const PlayerDetails = () => {
