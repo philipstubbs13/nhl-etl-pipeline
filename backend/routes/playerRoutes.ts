@@ -1,6 +1,7 @@
-const express = require('express')
+import express from 'express';
+import { downloadPlayerCsv, getPlayer } from '../controllers/playerController';
+
 const router = express.Router()
-const { downloadPlayerCsv, getPlayer } = require('../controllers/playerController')
 
 router.route('/:id').get(getPlayer);
 router.route('/:id/download').get(downloadPlayerCsv);

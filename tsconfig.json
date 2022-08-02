@@ -1,0 +1,24 @@
+{
+ 
+    "extends": "ts-node/node16/tsconfig.json",
+    "ts-node": {
+      "transpileOnly": true,
+      "files": true,
+      "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "outDir": "dist",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es6"
+      }
+    },
+    "compilerOptions": {}
+  }

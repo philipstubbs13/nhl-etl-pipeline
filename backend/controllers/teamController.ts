@@ -1,13 +1,15 @@
-const asyncHandler = require('express-async-handler')
-const axios = require('axios');
-const { buildTeamData } = require('../utils/buildTeamData');
+import asyncHandler from 'express-async-handler';
+import axios from 'axios';
+import { buildTeamData } from '../utils/buildTeamData';
+import { Request, Response } from 'express';
+import { ITeamOption } from '../shared.types';
 
-const apiBaseUrl = 'https://statsapi.web.nhl.com/api/v1/teams/';
+const apiBaseUrl: string = 'https://statsapi.web.nhl.com/api/v1/teams/';
 
-const getTeams = asyncHandler(async (req, res) => {
+export const getTeams = asyncHandler(async (req: Request, res: Response) => {
     const response = await axios.get(apiBaseUrl);
 
-    const teams = response.data.teams.map((team) => ({
+    const teams: ITeamOption[] = response.data.teams.map((team) => ({
         id: team.id,
         name: team.name,
     }))
@@ -15,22 +17,16 @@ const getTeams = asyncHandler(async (req, res) => {
     res.status(200).json({ teams })
 })
 
-const getTeam = asyncHandler(async (req, res) => {
+export const getTeam = asyncHandler(async (req: Request, res: Response) => {
     const response = await axios.get(`${apiBaseUrl}${req.params.id}?expand=team.roster&expand=team.stats&expand=team.schedule&season=${req.query.season}`);
 
     res.status(200).json(buildTeamData(response));
 })
 
-const downloadTeamCsv = asyncHandler(async (req, res) => {
+export const downloadTeamCsv = asyncHandler(async (req: Request, res: Response) => {
     const response = await axios.get(`${apiBaseUrl}${req.params.id}?expand=team.roster&expand=team.stats&season=${req.query.season}`);
     const headers = ['ID', 'Name', 'Venue', 'Games Played', 'Wins', 'Losses', 'Points', 'Goals Per Game']
     const teamData = [buildTeamData(response)];
     
     res.status(200).json({ teamData, headers })
-})
-
-module.exports = {
-    getTeams,
-    getTeam,
-    downloadTeamCsv
-}
+});

@@ -1,4 +1,6 @@
-const buildPlayerData = (playerResponse, playerStatsResponse, season) => {
+import { IPlayerData } from "../shared.types";
+
+export const buildPlayerData = (playerResponse, playerStatsResponse, season: number): IPlayerData => {
     const player = playerResponse.data.people[0];
     const playerStats = playerStatsResponse.data.stats[0].splits[0].stat;
 
@@ -18,8 +20,4 @@ const buildPlayerData = (playerResponse, playerStatsResponse, season) => {
         hits: playerStats.hits,
         points: playerStats.points,
     })
-}
-
-module.exports = {
-    buildPlayerData
 }

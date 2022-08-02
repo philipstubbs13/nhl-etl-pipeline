@@ -1,4 +1,6 @@
-const buildTeamData = (teamResponse) => {
+import { ITeamData } from "../shared.types";
+
+export const buildTeamData = (teamResponse): ITeamData => {
     const team = teamResponse.data.teams[0];
     const teamStats = team.teamStats[0].splits[0].stat;
 
@@ -14,8 +16,4 @@ const buildTeamData = (teamResponse) => {
         goals_per_game: teamStats.goalsPerGame
 
     })
-}
-
-module.exports = {
-    buildTeamData
 }
