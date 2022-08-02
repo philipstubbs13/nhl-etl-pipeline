@@ -1,7 +1,8 @@
 import { NhlContext } from "../context/NhlContext";
 import { useContext } from "react";
+import { INhlContext } from "../context/NhlContext.types";
 
-export const useNhlContext = () => {
+export const useNhlContext = (): INhlContext => {
   const context = useContext(NhlContext);
 
   if (!context) {

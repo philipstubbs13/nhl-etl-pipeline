@@ -2,7 +2,7 @@ import { Container} from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import { Dashboard } from './pages/Dashboard';
 import { PlayerDetails } from './pages/PlayerDetails';
-import { UiNavBar } from './components/ui/ui-navbar/UiNavbar';
+import { UiNavBar } from './components/ui/ui-navbar/UiNavbar.tsx';
 
 export const App = () => {
   return (

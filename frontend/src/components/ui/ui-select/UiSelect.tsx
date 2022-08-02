@@ -5,21 +5,27 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export const UiSelect = (props) => {
-  const { label = '', options = [], value = '' } = props;
+interface IProps {
+  label: string;
+  options: any[];
+  value: string;
+  onChange: (event) => void;
+}
+
+export const UiSelect: React.FC<IProps> = (props) => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id={props.label}>{label}</InputLabel>
+        <InputLabel id={props.label}>{props.label}</InputLabel>
         <Select
           labelId={props.label}
           id={props.label}
           sx={{ height: '40px' }}
-          value={value}
-          label={label}
+          value={props.value}
+          label={props.label}
           onChange={props.onChange}
         >
-          {options.map((option) => (
+          {props.options.map((option) => (
             <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
           ))}
         </Select>

@@ -1,6 +1,9 @@
+import { INhlContext } from '../context/NhlContext.types';
+import { NhlActions } from './nhlReducer.types';
+
 export const nhlReducer = (
-  state,
-  action) => {
+  state: INhlContext,
+  action: NhlActions ): INhlContext => {
   switch (action.type) {
     case 'SET_TEAMS':
       return {

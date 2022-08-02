@@ -1,15 +1,15 @@
-import { useNhlContext } from '../hooks/useNhlContext';
-import { UiSelect } from '../components/ui/ui-select/UiSelect';
+import { useNhlContext } from '../hooks/useNhlContext.tsx';
+import { UiSelect } from '../components/ui/ui-select/UiSelect.tsx';
 import { Box, Grid, Button, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { getTeam, getTeams, downloadTeamCsv } from '../apiMethods';
-import { UiCard } from '../components/ui/ui-card/UiCard';
+import { UiCard } from '../components/ui/ui-card/UiCard.tsx';
 import { seasonOptions } from '../constants';
 import { exportToCsv } from '../utils/exportToCsv';
-import { UiStat } from '../components/ui/ui-stat/UiStat';
+import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
 import { useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { setTeam, setSeason, setTeams } from '../reducers/actionCreators';
+import { setTeam, setSeason, setTeams } from '../reducers/actionCreators.ts';
 
 export const Dashboard = () => {
     const navigate = useNavigate();

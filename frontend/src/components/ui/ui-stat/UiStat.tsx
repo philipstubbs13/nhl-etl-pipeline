@@ -1,6 +1,12 @@
 import { Grid, Typography, Box } from '@mui/material';
+import React from 'react';
 
-export const UiStat = (props) => {
+interface IProps {
+  children: string | React.ReactNode;
+  title: string;
+}
+
+export const UiStat: React.FC<IProps> = (props) => {
   return (
     <Grid item={true} xs={12} sm={4}>
       <Typography  fontWeight={'bold'}>{props.title}</Typography>

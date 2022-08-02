@@ -9,7 +9,7 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 const pages = ['Home', 'About'];
 
-export const UiNavBar = () => {
+export const UiNavBar: React.FC = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
