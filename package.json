@@ -11,6 +11,7 @@
     "start": "node ./dist/backend/server.js",
     "watch-node": "nodemon dist/backend/server.js",
     "watch-ts": "tsc -w --outDir ./dist",
+    "postinstall": "tsc --outDir ./dist",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
   "keywords": [],
