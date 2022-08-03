@@ -10,7 +10,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node ./dist/backend/server.js",
     "watch-node": "nodemon dist/backend/server.js",
-    "watch-ts": "tsc -w --outDir ./dist",
+    "watch-ts": "tsc -w --outDir ./dist --excludeDirectories frontend",
     "postinstall": "tsc --outDir ./dist",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
