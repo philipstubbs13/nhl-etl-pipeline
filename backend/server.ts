@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 import express from 'express';
 import { errorHandler } from './middleware/errorMiddleware';
 import { Response} from 'express';
@@ -15,9 +15,9 @@ app.use('/api/teams', teamRoutes)
 app.use('/api/players', playerRoutes)
 
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../../backend/build')))
+    app.use(express.static(path.join(__dirname, '../../backend/frontendBuild')))
 
-    app.get('*', (_, res: Response) => res.sendFile(path.resolve(__dirname, '../', '../', 'backend', 'build', 'index.html')))
+    app.get('*', (_, res: Response) => res.sendFile(path.resolve(__dirname, '../', '../', 'backend', 'frontendBuild', 'index.html')))
 } else {
     app.get('/', (_, res: Response) => res.send('Please set to production'))
 }

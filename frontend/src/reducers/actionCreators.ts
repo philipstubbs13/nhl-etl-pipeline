@@ -10,12 +10,12 @@ export const setSeason = (selectedSeason: number): { type: NhlActionTypes.setSea
     return { type: NhlActionTypes.setSeason, payload: selectedSeason };
 };
 
-export const setTeams = (teams, selectedTeam): { type: NhlActionTypes.setTeams; payload: { teams: IGetTeamsResponseData[], selectedTeam: IGetTeamResponseData }} => {
+export const setTeams = (teams: IGetTeamsResponseData[], selectedTeam: IGetTeamResponseData): { type: NhlActionTypes.setTeams; payload: { teams: IGetTeamsResponseData[], selectedTeam: IGetTeamResponseData }} => {
     return { type: NhlActionTypes.setTeams, payload: { teams, selectedTeam } };
 };
 
-export const setPlayer = (selectedPlayer): { type: NhlActionTypes.setPlayer; payload: { selectedPlayer: IGetPlayerResponseData }} => {
-    return { type: NhlActionTypes.setPlayer, payload: selectedPlayer };
+export const setPlayer = (selectedPlayer: IGetPlayerResponseData): { type: NhlActionTypes.setPlayer; payload: { selectedPlayer: IGetPlayerResponseData }} => {
+    return { type: NhlActionTypes.setPlayer, payload: { selectedPlayer }};
 };
 
 
