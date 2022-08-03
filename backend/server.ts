@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 import express from 'express';
 import { errorHandler } from './middleware/errorMiddleware';
 import { Response} from 'express';
