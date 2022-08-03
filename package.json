@@ -7,7 +7,7 @@
     "server": "nodemon backend/server.ts",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd dist && cd frontend npm install --prefix frontend && npm run build --prefix frontend",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node ./dist/backend/server.js",
     "watch-node": "nodemon dist/backend/server.js",
     "watch-ts": "tsc -w --outDir ./dist",
