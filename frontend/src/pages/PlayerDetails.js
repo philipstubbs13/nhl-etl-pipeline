@@ -39,10 +39,9 @@ export const PlayerDetails = () => {
 
     return (
         <>
-       
             <Box marginY={4}>
-                <Grid container={true} alignItems={'center'} spacing={2}>
-                    <Grid item={true} xs={3}>
+                <Grid container={true} alignItems={'center'} spacing={1}>
+                    <Grid item={true} xs={3} sm={3}>
                         <Button
                             sx={{ height: '40px' }}
                             variant={'outlined'}
@@ -51,7 +50,7 @@ export const PlayerDetails = () => {
                                 Back
                         </Button>
                     </Grid>
-                    <Grid item={true} xs={4}>
+                    <Grid item={true}xs={5} sm={4}>
                         <UiSelect
                             label={'Select season'}
                             options={seasonOptions}
@@ -59,7 +58,7 @@ export const PlayerDetails = () => {
                             value={selectedSeason}
                         />
                     </Grid>
-                    <Grid item={true} xs={4}>
+                    <Grid item={true} xs={4} sm={4}>
                         <Button
                             disabled={!data?.firstName}
                             sx={{ height: '40px' }}
@@ -67,14 +66,14 @@ export const PlayerDetails = () => {
                             startIcon={<FileDownloadIcon />}
                             onClick={() => onDownloadPlayerCsv(id)}
                         >
-                            Download CSV
+                            Download
                         </Button>
                     </Grid>
                 </Grid>
             </Box> 
             <Box marginY={4}>
                 <Grid container={true} spacing={2}>
-                    <Grid item={true} xs={3}>  
+                    <Grid item={true} xs={12} sm={3}>  
                         <Grid alignItems={'center'} container={true} item={true} spacing={1}> 
                             <Grid item={true} xs={12}>
                                 <Typography variant={'subtitle1'}>{data?.firstName}</Typography>
@@ -92,7 +91,7 @@ export const PlayerDetails = () => {
                             )}
                         </Grid>
                     </Grid>
-                    <Grid item={true} xs={9}>
+                    <Grid item={true} xs={12} sm={9}>
                         {data?.firstName && (
                             <Grid container={true} spacing={5}>
                                 <UiStat title={'Current Team'}>{data?.team}</UiStat>

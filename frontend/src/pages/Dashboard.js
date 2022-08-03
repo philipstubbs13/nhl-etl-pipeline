@@ -46,7 +46,7 @@ export const Dashboard = () => {
         <>
             <Box marginY={3}>
                 <Grid alignItems={'center'} container={true} spacing={2}>
-                    <Grid item={true} xs={4}>
+                    <Grid item={true} xs={12} sm={4}>
                         <UiSelect
                             label={'Select team'}
                             options={teams}
@@ -54,7 +54,7 @@ export const Dashboard = () => {
                             value={selectedTeamId}
                         />
                     </Grid>
-                    <Grid item={true} xs={4}>
+                    <Grid item={true} xs={12} sm={4}>
                         <UiSelect
                             label={'Select season'}
                             options={seasonOptions}
@@ -62,13 +62,13 @@ export const Dashboard = () => {
                             value={selectedSeason}
                         />
                     </Grid>
-                    <Grid item={true} xs={4}>
+                    <Grid item={true} xs={12} sm={4}>
                         <Button
                             disabled={!selectedTeam}
                             variant={'outlined'}
                             startIcon={<FileDownloadIcon />}
                             onClick={() => onDownloadTeamCsv(selectedTeamId)}>
-                                Download CSV
+                                Download
                         </Button>
                     </Grid>
                 </Grid>
