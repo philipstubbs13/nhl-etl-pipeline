@@ -1,19 +1,14 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+import { Button, Container, Typography, Toolbar, Box, AppBar } from '@mui/material';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
-const pages = ['Home', 'About'];
+const pages = ['Home', 'About', 'API'];
 
 export const UiNavBar: React.FC = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar>
           <RocketLaunchIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"

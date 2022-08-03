@@ -1,11 +1,12 @@
 import { INhlContext } from '../context/NhlContext.types';
-import { NhlActions } from './nhlReducer.types';
+//@ts-ignore
+import { NhlActions, NhlActionTypes } from './nhlReducer.types.ts';
 
 export const nhlReducer = (
   state: INhlContext,
   action: NhlActions ): INhlContext => {
   switch (action.type) {
-    case 'SET_TEAMS':
+    case NhlActionTypes.setTeams:
       return {
         ...state,
         selectedTeam: action.payload.selectedTeam,
@@ -14,17 +15,17 @@ export const nhlReducer = (
           label: team.name
         })),
       };
-      case 'SET_PLAYER':
+      case NhlActionTypes.setPlayer:
         return {
           ...state,
           selectedPlayer: action.payload
         };
-    case 'SET_TEAM':
+    case NhlActionTypes.setTeam:
       return {
         ...state,
         selectedTeamId: action.payload,
       }
-      case 'SET_SEASON':
+      case NhlActionTypes.setSeason:
         return {
           ...state,
           selectedSeason: action.payload

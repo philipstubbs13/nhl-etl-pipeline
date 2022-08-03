@@ -1,4 +1,6 @@
-export const seasonOptions: { value: number, label: string}[] = [
+import { IValueLabelOption } from './components/ui/ui-select/UiSelect.types';
+
+export const seasonOptions: IValueLabelOption<number, string>[] = [
     { value: 20142015, label: '2014 - 2015' },
     { value: 20152016, label: '2015 - 2016' },
     { value: 20162017, label: '2016 - 2017' },

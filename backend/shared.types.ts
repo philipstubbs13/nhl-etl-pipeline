@@ -19,7 +19,7 @@ export interface ITeamData {
     id: number;
     name: string;
     venue: string;
-    roster: any[];
+    roster?: any[];
     games_played: number;
     wins: number;
     losses: number;

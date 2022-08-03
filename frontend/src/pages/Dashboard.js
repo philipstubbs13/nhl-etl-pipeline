@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { getTeam, getTeams, downloadTeamCsv } from '../apiMethods.ts';
 import { UiCard } from '../components/ui/ui-card/UiCard.tsx';
 import { seasonOptions } from '../constants.ts';
-import { exportToCsv } from '../utils/exportToCsv';
+import { exportToCsv } from '../utils/exportToCsv.ts';
 import { UiStat } from '../components/ui/ui-stat/UiStat';
 import { useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -46,15 +46,31 @@ export const Dashboard = () => {
         <>
             <Box marginY={3}>
                 <Grid alignItems={'center'} container={true} spacing={2}>
-                <Grid item={true} xs={4}>
-                    <UiSelect label={'Select team'} options={teams} onChange={(event) => dispatch(setTeam(event.target.value))} value={selectedTeamId} />
-                </Grid>
-                <Grid item={true} xs={4}>
-                    <UiSelect label={'Select season'} options={seasonOptions} onChange={(event) => dispatch(setSeason(event.target.value))} value={selectedSeason} />
-                </Grid>
-                <Grid item={true} xs={4}>
-                    <Button disabled={!selectedTeam} variant={'outlined'} startIcon={<FileDownloadIcon />} onClick={() => onDownloadTeamCsv(selectedTeamId)}>Download CSV</Button>
-                </Grid>
+                    <Grid item={true} xs={4}>
+                        <UiSelect
+                            label={'Select team'}
+                            options={teams}
+                            onChange={(event) => dispatch(setTeam(event.target.value))}
+                            value={selectedTeamId}
+                        />
+                    </Grid>
+                    <Grid item={true} xs={4}>
+                        <UiSelect
+                            label={'Select season'}
+                            options={seasonOptions}
+                            onChange={(event) => dispatch(setSeason(event.target.value))}
+                            value={selectedSeason}
+                        />
+                    </Grid>
+                    <Grid item={true} xs={4}>
+                        <Button
+                            disabled={!selectedTeam}
+                            variant={'outlined'}
+                            startIcon={<FileDownloadIcon />}
+                            onClick={() => onDownloadTeamCsv(selectedTeamId)}>
+                                Download CSV
+                        </Button>
+                    </Grid>
                 </Grid>
             </Box>
             {!selectedTeam && (

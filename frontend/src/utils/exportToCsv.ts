@@ -1,6 +1,7 @@
 import { ExportToCsv } from 'export-to-csv';
+import { IDownloadPlayerCsvResponseData, IDownloadTeamCsvResponseData } from '../shared.types';
 
-export const exportToCsv = (headers, data, title) => {
+export const exportToCsv = (headers: string[], data: IDownloadPlayerCsvResponseData | IDownloadTeamCsvResponseData, title: string): void => {
   const options = { 
       fieldSeparator: ',',
       showLabels: true, 
@@ -8,7 +9,7 @@ export const exportToCsv = (headers, data, title) => {
       title,
       useTextFile: false,
       useBom: true,
-      headers: headers,
+      headers,
     };
     const csvExporter = new ExportToCsv(options);
       

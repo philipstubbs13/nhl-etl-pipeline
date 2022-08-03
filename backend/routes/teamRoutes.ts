@@ -7,4 +7,4 @@ router.route('/').get(getTeams);
 router.route('/:id').get(getTeam);
 router.route('/:id/download').get(downloadTeamCsv);
 
-module.exports = router
+export default router;

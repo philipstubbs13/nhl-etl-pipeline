@@ -13,8 +13,6 @@ export const getTeams = async (): Promise<IGetTeamsResponseData[]> => {
 export const getTeam = async (teamId: number, season: number): Promise<IGetTeamResponseData> => {
     const response = await axios.get(`${baseTeamsUrl}/${teamId}?season=${season}`);
 
-    console.log(response.data)
-
     return response.data;
 };
 

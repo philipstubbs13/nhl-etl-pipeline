@@ -2,6 +2,8 @@ import path from 'path';
 import express from 'express';
 import { errorHandler } from './middleware/errorMiddleware';
 import { Response} from 'express';
+import teamRoutes from './routes/teamRoutes';
+import playerRoutes from './routes/playerRoutes';
 
 const port = process.env.PORT || 5000
 const app = express()
@@ -9,8 +11,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/api/teams', require('./routes/teamRoutes'))
-app.use('/api/players', require('./routes/playerRoutes'))
+app.use('/api/teams', teamRoutes)
+app.use('/api/players', playerRoutes)
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/build')))

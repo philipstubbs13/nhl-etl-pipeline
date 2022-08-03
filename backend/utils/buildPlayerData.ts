@@ -1,6 +1,6 @@
 import { IPlayerData } from "../shared.types";
 
-export const buildPlayerData = (playerResponse, playerStatsResponse, season: number): IPlayerData => {
+export const buildPlayerData = (playerResponse: any, playerStatsResponse: any, season: number): IPlayerData => {
     const player = playerResponse.data.people[0];
     const playerStats = playerStatsResponse.data.stats[0].splits[0].stat;
 

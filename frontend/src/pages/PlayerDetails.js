@@ -2,7 +2,7 @@ import { useNhlContext } from '../hooks/useNhlContext.tsx';
 import { Box, Grid, Typography, Button } from '@mui/material';
 import { useEffect } from 'react';
 import {  downloadPlayerCsv, getPlayer} from '../apiMethods.ts';
-import { exportToCsv } from '../utils/exportToCsv';
+import { exportToCsv } from '../utils/exportToCsv.ts';
 import { useParams, useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -19,6 +19,7 @@ export const PlayerDetails = () => {
     } = useNhlContext();
     const { id } = useParams();
     const navigate = useNavigate();
+    const hasData = selectedPlayer?.firstName;
 
     useEffect(() => {
         const loadPlayerDetails = async (playerId) => {
@@ -44,19 +45,37 @@ export const PlayerDetails = () => {
                     <Box marginY={4}>
                         <Grid container={true} alignItems={'center'} spacing={2}>
                             <Grid item={true} xs={3}>
-                                <Button sx={{ height: '40px' }} variant={'outlined'} startIcon={<ArrowBackIosIcon />} onClick={() => navigate('/')}>Back</Button>
+                                <Button
+                                    sx={{ height: '40px' }}
+                                    variant={'outlined'}
+                                    startIcon={<ArrowBackIosIcon />}
+                                    onClick={() => navigate('/')}>
+                                        Back
+                                </Button>
                             </Grid>
                             <Grid item={true} xs={4}>
-                                <UiSelect label={'Select season'} options={seasonOptions} onChange={(event) => dispatch(setSeason(event.target.value))} value={selectedSeason} />
+                                <UiSelect
+                                    label={'Select season'}
+                                    options={seasonOptions}
+                                    onChange={(event) => dispatch(setSeason(event.target.value))}
+                                    value={selectedSeason}
+                                />
                             </Grid>
-                            {selectedPlayer.firstName && (
+                            {hasData && (
                                 <Grid item={true} xs={4}>
-                                    <Button sx={{ height: '40px' }} variant={'outlined'} startIcon={<FileDownloadIcon />} onClick={() => onDownloadPlayerCsv(id)}>Download CSV</Button>
+                                    <Button
+                                        sx={{ height: '40px' }}
+                                        variant={'outlined'}
+                                        startIcon={<FileDownloadIcon />}
+                                        onClick={() => onDownloadPlayerCsv(id)}
+                                    >
+                                        Download CSV
+                                    </Button>
                                 </Grid>
                             )}
                         </Grid>
                     </Box>
-                    {selectedPlayer.firstName && (
+                    {hasData && (
                         <Box marginY={4}>
                             <Grid container={true}>
                                 <Grid item={true} xs={3}>  
@@ -66,7 +85,12 @@ export const PlayerDetails = () => {
                                             <Typography variant={'h4'}>{selectedPlayer.lastName}</Typography>
                                         </Grid>
                                         <Grid item={true} xs={12}>
-                                            <Typography variant={'h3'}><Typography component={'span'} variant={'h4'}>#</Typography>{selectedPlayer.number}</Typography>
+                                            <Typography variant={'h3'}>
+                                                <Typography component={'span'} variant={'h4'}>
+                                                    #
+                                                </Typography>
+                                                {selectedPlayer.number}
+                                            </Typography>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -85,7 +109,7 @@ export const PlayerDetails = () => {
                             </Grid>
                         </Box>
                     )}
-                    {!selectedPlayer.firstName && (
+                    {!hasData && (
                         <Grid container={true} alignItems={'center'}>
                             <Grid item={true} xs={12}>
                                 <Box marginTop={8}>
