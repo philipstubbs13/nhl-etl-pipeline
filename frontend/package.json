@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build ../dist/frontend",
+    "build": "react-scripts build && mv ./frontend/build ./dist/frontend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
