@@ -19,7 +19,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "target": "es6",
         "jsx": "react-jsx",
-      }
+      },
     },
     "compilerOptions": {
       "allowJs": true,
@@ -36,5 +36,5 @@
       "suppressImplicitAnyIndexErrors": true,
       "target": "es6",
       "jsx": "react-jsx",
-    }
+    },
   }
