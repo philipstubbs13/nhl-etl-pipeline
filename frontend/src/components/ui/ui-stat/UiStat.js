@@ -2,7 +2,6 @@ import { Grid, Typography, Box } from '@mui/material';
 import React from 'react';
 import CountUp from 'react-countup';
 
-
 export const UiStat = (props) => {
   return (
     <Grid item={true} xs={12} sm={4}>

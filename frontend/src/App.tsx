@@ -5,9 +5,13 @@ import { PlayerDetails } from './pages/PlayerDetails';
 //@ts-ignore
 import { UiNavBar } from './components/ui/ui-navbar/UiNavbar.tsx';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 export const App: React.FC = () => {
   return (
+    <QueryClientProvider client={queryClient}>
       <Router>
         <UiNavBar />
         <Container maxWidth="md">
@@ -17,5 +21,6 @@ export const App: React.FC = () => {
           </Routes>
         </Container>
       </Router>
+    </QueryClientProvider>
   );
 };
