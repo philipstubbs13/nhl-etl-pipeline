@@ -6,7 +6,7 @@ const pages = ['Home', 'About', 'API'];
 
 export const UiNavBar: React.FC = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar>
           <RocketLaunchIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -30,7 +30,7 @@ export const UiNavBar: React.FC = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, mx: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, mr: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>

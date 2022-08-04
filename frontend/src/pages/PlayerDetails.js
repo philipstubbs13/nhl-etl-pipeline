@@ -1,27 +1,30 @@
 import { useNhlContext } from '../hooks/useNhlContext.tsx';
-import { Box, Grid, Typography, Button } from '@mui/material';
+import { Box, Grid, Typography, Button, CircularProgress } from '@mui/material';
 import {  downloadPlayerCsv, getPlayer} from '../apiMethods.ts';
 import { exportToCsv } from '../utils/exportToCsv.ts';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { UiSelect } from '../components/ui/ui-select/UiSelect.tsx';
 import { seasonOptions } from '../constants.ts';
 import { UiStat } from '../components/ui/ui-stat/UiStat';
-import { setSeason, setPlayer } from '../reducers/actionCreators.ts';
+import { setSeason } from '../reducers/actionCreators.ts';
 import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 
 export const PlayerDetails = () => {
     const { dispatch, selectedSeason } = useNhlContext();
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+    const firstNameParam = searchParams.get('firstName');
+    const lastNameParam = searchParams.get('lastName');
+    const jerseyNumberParam = searchParams.get('jerseyNumber');
    
-    const { data } = useQuery(
+    const { data, isLoading } = useQuery(
         ['playerData', id, selectedSeason, dispatch],
         async () => {
           const playerData = await getPlayer(id, selectedSeason);
-
-          dispatch(setPlayer(playerData));
       
           return playerData
         }
@@ -73,23 +76,33 @@ export const PlayerDetails = () => {
                     <Grid item={true} xs={12} sm={3}>  
                         <Grid alignItems={'center'} container={true} item={true} spacing={1}> 
                             <Grid item={true} xs={12}>
-                                <Typography variant={'subtitle1'}>{data?.firstName}</Typography>
-                                <Typography variant={'h4'}>{data?.lastName}</Typography>
+                                <Typography variant={'subtitle1'}>{firstNameParam}</Typography>
+                                <Typography variant={'h4'}>{lastNameParam}</Typography>
                             </Grid>
-                            {data?.number && (
-                                <Grid item={true} xs={12}>
-                                    <Typography variant={'h3'}>
-                                        <Typography component={'span'} variant={'h4'}>
-                                        #
-                                        </Typography>
-                                        {data?.number}
+                            <Grid item={true} xs={12}>
+                                <Typography variant={'h3'}>
+                                    <Typography component={'span'} variant={'h4'}>
+                                    #
                                     </Typography>
-                                </Grid>
-                            )}
+                                    {jerseyNumberParam}
+                                </Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Grid item={true} xs={12} sm={9}>
-                        {data?.firstName && (
+                        {isLoading && (
+                            <Grid container={true} alignItems={'center'} spacing={5}>
+                                <Grid item={true} xs={12}>
+                                    <Typography variant={'h5'} textAlign={'center'}>
+                                        Loading...
+                                    </Typography>
+                                    <Typography variant={'h5'} textAlign={'center'}>
+                                        <CircularProgress />
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        )}
+                        {data?.firstName && !isLoading && (
                             <Grid container={true} spacing={5}>
                                 <UiStat title={'Current Team'}>{data?.team}</UiStat>
                                 <UiStat title={'Primary Position'}>{data?.position}</UiStat>
@@ -101,11 +114,11 @@ export const PlayerDetails = () => {
                                 <UiStat title={'Points'}>{data?.points}</UiStat>
                             </Grid>
                         )}
-                        {!data?.firstName && (
+                        {!data?.firstName && !isLoading && (
                             <Grid container={true} alignItems={'center'} spacing={5}>
                                 <Grid item={true} xs={12}>
                                     <Typography variant={'h6'} textAlign={'center'}>
-                                        No player data available for the {selectedSeason} season.
+                                        No player data available for {firstNameParam} {lastNameParam} for the {selectedSeason} season.
                                     </Typography>
                                     <Typography textAlign={'center'}>Try selecting a different season or go back and select another player.</Typography>
                                 </Grid>

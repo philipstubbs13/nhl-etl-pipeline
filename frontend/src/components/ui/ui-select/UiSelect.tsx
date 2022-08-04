@@ -25,6 +25,9 @@ export const UiSelect: React.FC<IProps> = (props) => {
           value={props.value}
           label={props.label}
           onChange={props.onChange}
+          MenuProps={{
+            sx:{ maxHeight: '350px'}
+          }}
         >
           {props.options.map((option) => (
             <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>

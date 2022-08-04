@@ -14,10 +14,10 @@ export const buildPlayerData = (playerResponse: any, playerStatsResponse: any, s
         number: player.primaryNumber,
         position: player.primaryPosition.name,
         is_rookie: player.rookie ? 'yes' : 'no',
-        assists: playerStats.assists,
-        goals: playerStats.goals,
-        games: playerStats.games,
-        hits: playerStats.hits,
-        points: playerStats.points,
+        assists: playerStats.assists || 0,
+        goals: playerStats.goals || 0,
+        games: playerStats.games || 0,
+        hits: playerStats.hits || 0,
+        points: playerStats.points || 0,
     })
 }

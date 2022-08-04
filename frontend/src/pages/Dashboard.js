@@ -109,7 +109,7 @@ export const Dashboard = () => {
                                     <UiCard
                                         key={roster.person.id}
                                         roster={roster}
-                                        onClickDetails={() => navigate(`/player/${roster.person.id}`)}
+                                        onClickDetails={() => navigate(`/player/${roster.person.id}?firstName=${roster.person.fullName.split(' ')[0]}&lastName=${roster.person.fullName.split(' ')[1]}&jerseyNumber=${roster.jerseyNumber}`)}
                                     />
                                 </Grid>
                             ))}

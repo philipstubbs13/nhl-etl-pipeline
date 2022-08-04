@@ -1,4 +1,4 @@
-import { IGetPlayerResponseData, IGetTeamResponseData, IGetTeamsResponseData } from "../shared.types";
+import { IGetTeamResponseData, IGetTeamsResponseData, ISelectedPlayer } from "../shared.types";
 // @ts-ignore
 import { NhlActionTypes } from "./nhlReducer.types.ts";
 
@@ -14,7 +14,7 @@ export const setTeams = (teams: IGetTeamsResponseData[], selectedTeam: IGetTeamR
     return { type: NhlActionTypes.setTeams, payload: { teams, selectedTeam } };
 };
 
-export const setPlayer = (selectedPlayer: IGetPlayerResponseData): { type: NhlActionTypes.setPlayer; payload: { selectedPlayer: IGetPlayerResponseData }} => {
+export const setPlayer = (selectedPlayer: ISelectedPlayer): { type: NhlActionTypes.setPlayer; payload: { selectedPlayer: ISelectedPlayer }} => {
     return { type: NhlActionTypes.setPlayer, payload: { selectedPlayer }};
 };
 
