@@ -12,10 +12,7 @@ import { setSeason, setPlayer } from '../reducers/actionCreators.ts';
 import { useQuery } from '@tanstack/react-query';
 
 export const PlayerDetails = () => {
-    const {
-        dispatch,
-        selectedSeason
-    } = useNhlContext();
+    const { dispatch, selectedSeason } = useNhlContext();
     const { id } = useParams();
     const navigate = useNavigate();
    
@@ -105,7 +102,7 @@ export const PlayerDetails = () => {
                             </Grid>
                         )}
                         {!data?.firstName && (
-                            <Grid container={true} alignItems={'center'} spacin={5}>
+                            <Grid container={true} alignItems={'center'} spacing={5}>
                                 <Grid item={true} xs={12}>
                                     <Typography variant={'h6'} textAlign={'center'}>
                                         No player data available for the {selectedSeason} season.

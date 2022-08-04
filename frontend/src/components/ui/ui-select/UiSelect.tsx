@@ -10,7 +10,7 @@ interface IProps {
   label: string;
   options: IValueLabelOption[];
   value: string;
-  onChange: (event) => void;
+  onChange: (event: any) => void;
 }
 
 export const UiSelect: React.FC<IProps> = (props) => {

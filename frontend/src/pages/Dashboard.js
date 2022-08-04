@@ -106,7 +106,11 @@ export const Dashboard = () => {
                             </Grid>
                             {selectedTeam && selectedTeam.roster.map((roster) => (
                                 <Grid item={true} xs={12} sm={8} md={4} lg={3}>
-                                    <UiCard key={roster.person.id} roster={roster} onClickDetails={() => navigate(`/player/${roster.person.id}`)} />
+                                    <UiCard
+                                        key={roster.person.id}
+                                        roster={roster}
+                                        onClickDetails={() => navigate(`/player/${roster.person.id}`)}
+                                    />
                                 </Grid>
                             ))}
                         </Grid>

@@ -10,7 +10,7 @@ export const nhlReducer = (
       return {
         ...state,
         selectedTeam: action.payload.selectedTeam,
-        teams: action.payload.teams.map((team) => ({
+        teams: action.payload.teams.map((team: any) => ({
           value: team.id,
           label: team.name
         })),
