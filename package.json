@@ -12,7 +12,9 @@
     "watch-node": "nodemon dist/backend/server.js",
     "watch-ts": "tsc -w --outDir ./dist",
     "postinstall": "tsc --outDir ./dist",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main"
+    "deploy": "git add . && git commit -m Heroku && git push heroku main",
+    "test": "npm test --prefix frontend",
+    "install": "npm install --prefix frontend && npm install"
   },
   "keywords": [],
   "author": "Phil Stubbs",

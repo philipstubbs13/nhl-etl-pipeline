@@ -27,8 +27,8 @@
   * [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
-  * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
+  * [Running Tests](#test_tube-running-tests)
   * [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
 - [Contributing](#wave-contributing)
@@ -86,28 +86,20 @@ There are 2 main pipelines:
 
 ### Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env` file directly inside the `nhl-etl-pipeline/frontend` folder of this project
+To run this project, you need to add the following environment variables to your `.env` file directly inside the `nhl-etl-pipeline/frontend` folder of this project.
 
 ```bash
 BUILD_PATH='../backend/frontendBuild'
 ```
 
-The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app will output assets for production.
+The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs assets needed to deploy to production. For more information on deployment, see [Deployment](#triangular_flag_on_post-deployment).
 
 ## Getting Started
 
 ### Prerequisites
 
 This project uses `npm` as package manager. So, make sure it is installed on your system.
-   
-### Running Tests
 
-To run tests, run the following command
-
-```bash
-  cd nhl-etl-pipeline/frontend/
-  npm run test
-```
 
 ### Run Locally
 
@@ -126,27 +118,24 @@ Go to the project directory.
 Install dependencies.
 
 ```bash
-  npm install
-```
-
-Go to the project frontend directory.
-
-```bash
-  cd nhl-etl-pipeline/frontend/
-```
-
-Install frontend dependencies.
-
-```bash
-  npm install
+  npm run install
 ```
 
 Start the server.
 
-This command starts the backend server and API on port `5000`, and the frontend starts up on port `3000` by default. You can view the frontend in a browser by going to `http://localhost:3000`.
+This command starts the backend server and API on port `5000`. The frontend starts up on port `3000` by default. You can view the frontend in a browser by going to `http://localhost:3000`.
 
 ```bash
   npm run dev
+```
+
+### Running Tests
+
+To run tests, run the following command in the root directory of this project.
+
+```bash
+  cd nhl-etl-pipeline
+  npm run test
 ```
 
 ###  Deployment
@@ -157,6 +146,8 @@ To deploy this project, build the frontend assests for production.
 cd nhl-etl-pipeline/frontend/
 npm run build
 ```
+
+This creates a `frontendBuild` folder inside `nhl-etl-pipeline/backend` that contains all the frontend assets needed to deploy the application to production.
 
 Then, deploy project to Heroku.
 
