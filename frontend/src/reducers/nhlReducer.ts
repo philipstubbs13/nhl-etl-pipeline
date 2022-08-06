@@ -15,17 +15,12 @@ export const nhlReducer = (
           label: team.name
         })),
       };
-      case NhlActionTypes.setPlayer:
-        return {
-          ...state,
-          selectedPlayer: action.payload
-        };
     case NhlActionTypes.setTeam:
       return {
         ...state,
         selectedTeamId: action.payload,
       }
-      case NhlActionTypes.setSeason:
+    case NhlActionTypes.setSeason:
         return {
           ...state,
           selectedSeason: action.payload

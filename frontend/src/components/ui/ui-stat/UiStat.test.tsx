@@ -3,6 +3,7 @@ import { UiStat } from './UiStat';
 
 describe('UiStat', () =>{
     const propsMock: React.ComponentProps<typeof UiStat> = {
+        children: 4,
         title: 'Goals',
     };
 

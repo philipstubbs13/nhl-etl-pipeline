@@ -6,7 +6,7 @@ import { getTeam, getTeams, downloadTeamCsv } from '../apiMethods.ts';
 import { UiCard } from '../components/ui/ui-card/UiCard.tsx';
 import { seasonOptions } from '../constants.ts';
 import { exportToCsv } from '../utils/exportToCsv.ts';
-import { UiStat } from '../components/ui/ui-stat/UiStat';
+import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
 import { useNavigate } from 'react-router-dom';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { setTeam, setSeason, setTeams } from '../reducers/actionCreators.ts';

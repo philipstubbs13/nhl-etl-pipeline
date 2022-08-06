@@ -1,15 +1,23 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import React from 'react';
+import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import { IValueLabelOption } from './UiSelect.types';
 
 interface IProps {
+  /**
+   * The label of the input.
+   */
   label: string;
+  /**
+   * The list of options.
+   */
   options: IValueLabelOption[];
+  /**
+   * The value of the input.
+   */
   value: string;
+  /**
+   * Callback fired when option is selected.
+   */
   onChange: (event: any) => void;
 }
 
@@ -36,4 +44,4 @@ export const UiSelect: React.FC<IProps> = (props) => {
       </FormControl>
     </Box>
   );
-}
+};

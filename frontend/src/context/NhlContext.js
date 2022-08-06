@@ -4,7 +4,6 @@ import { nhlReducer } from "../reducers/nhlReducer.ts";
 export const initialState = {
   dispatch: () => null,
   selectedSeason: 20212022,
-  selectedPlayer: null,
   selectedTeam: null,
   selectedTeamId: 30,
   teams: [],

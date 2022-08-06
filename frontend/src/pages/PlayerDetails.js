@@ -1,5 +1,5 @@
 import { useNhlContext } from '../hooks/useNhlContext.tsx';
-import { Box, Grid, Typography, Button, CircularProgress } from '@mui/material';
+import { Box, Grid, Typography, Button } from '@mui/material';
 import {  downloadPlayerCsv, getPlayer} from '../apiMethods.ts';
 import { exportToCsv } from '../utils/exportToCsv.ts';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
@@ -7,10 +7,11 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { UiSelect } from '../components/ui/ui-select/UiSelect.tsx';
 import { seasonOptions } from '../constants.ts';
-import { UiStat } from '../components/ui/ui-stat/UiStat';
+import { UiStat } from '../components/ui/ui-stat/UiStat.tsx';
 import { setSeason } from '../reducers/actionCreators.ts';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { UiLoading } from '../components/ui/ui-loading/UiLoading.tsx';
 
 export const PlayerDetails = () => {
     const { dispatch, selectedSeason } = useNhlContext();
@@ -40,8 +41,8 @@ export const PlayerDetails = () => {
     return (
         <>
             <Box marginY={4}>
-                <Grid container={true} alignItems={'center'} spacing={1}>
-                    <Grid item={true} xs={3} sm={3}>
+                <Grid container={true} alignItems={'center'} spacing={2}>
+                    <Grid item={true} xs={12} sm={3}>
                         <Button
                             sx={{ height: '40px' }}
                             variant={'outlined'}
@@ -50,7 +51,7 @@ export const PlayerDetails = () => {
                                 Back
                         </Button>
                     </Grid>
-                    <Grid item={true}xs={5} sm={4}>
+                    <Grid item={true} xs={12} sm={4}>
                         <UiSelect
                             label={'Select season'}
                             options={seasonOptions}
@@ -58,7 +59,7 @@ export const PlayerDetails = () => {
                             value={selectedSeason}
                         />
                     </Grid>
-                    <Grid item={true} xs={4} sm={4}>
+                    <Grid item={true} xs={12} sm={4}>
                         <Button
                             disabled={!data?.firstName}
                             sx={{ height: '40px' }}
@@ -90,18 +91,7 @@ export const PlayerDetails = () => {
                         </Grid>
                     </Grid>
                     <Grid item={true} xs={12} sm={9}>
-                        {isLoading && (
-                            <Grid container={true} alignItems={'center'} spacing={5}>
-                                <Grid item={true} xs={12}>
-                                    <Typography variant={'h5'} textAlign={'center'}>
-                                        Loading...
-                                    </Typography>
-                                    <Typography variant={'h5'} textAlign={'center'}>
-                                        <CircularProgress />
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                        )}
+                        {isLoading && <UiLoading /> }
                         {data?.firstName && !isLoading && (
                             <Grid container={true} spacing={5}>
                                 <UiStat title={'Current Team'}>{data?.team}</UiStat>

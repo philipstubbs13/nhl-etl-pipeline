@@ -2,7 +2,19 @@ import { Grid, Typography, Box } from '@mui/material';
 import React from 'react';
 import CountUp from 'react-countup';
 
-export const UiStat = (props) => {
+interface IProps {
+  /**
+   * The stat to be displayed.
+   */
+  children: number | string;
+  /**
+   * The title associated with the stat being displayed.
+   */
+  title: string;
+}
+
+export const UiStat: React.FC<IProps> = (props) => {
+  
   return (
     <Grid item={true} xs={12} sm={4}>
       <Typography fontWeight={'bold'} textAlign={'center'}>{props.title}</Typography>

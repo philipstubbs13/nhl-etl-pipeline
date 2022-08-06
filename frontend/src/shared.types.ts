@@ -55,9 +55,3 @@ export interface IDownloadTeamCsvResponseData {
     headers: string;
     teamData: IGetTeamResponseData[]
 }
-
-export interface ISelectedPlayer {
-    id: number;
-    firstName: string;
-    lastName: string;
-}
