@@ -13,8 +13,7 @@
     "watch-ts": "tsc -w --outDir ./dist",
     "postinstall": "tsc --outDir ./dist",
     "deploy": "git add . && git commit -m Heroku && git push heroku main",
-    "test": "npm test --prefix frontend",
-    "install": "npm install --prefix frontend && npm install"
+    "test": "npm test --prefix frontend"
   },
   "keywords": [],
   "author": "Phil Stubbs",

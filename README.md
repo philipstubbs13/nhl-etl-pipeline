@@ -20,22 +20,21 @@
 
 # Table of Contents
 
-- [About the Project](#star2-about-the-project)
-  * [Screenshots](#camera-screenshots)
-  * [Tech Stack](#space_invader-tech-stack)
-  * [Features](#dart-features)
-  * [Environment Variables](#key-environment-variables)
-- [Getting Started](#toolbox-getting-started)
-  * [Prerequisites](#bangbang-prerequisites)
-  * [Run Locally](#running-run-locally)
-  * [Running Tests](#test_tube-running-tests)
-  * [Deployment](#triangular_flag_on_post-deployment)
-- [Usage](#eyes-usage)
-- [Contributing](#wave-contributing)
-- [Contact](#handshake-contact)
-- [Acknowledgements](#gem-acknowledgements)
+- [About the Project](#about-the-project)
+  * [Screenshots](#screenshots)
+  * [Tech Stack](#tech-stack)
+  * [Features](#features)
+  * [Environment Variables](#environment-variables)
+- [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Run Locally](#running-locally)
+  * [Running Tests](#running-tests)
+  * [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-## About the Project
+## <a name="about-the-project"></a>About the Project
 
 An etl pipeline that extracts, combines, and transforms team and player stats from the NHL API.
 
@@ -46,13 +45,13 @@ There are 2 main pipelines:
 * **Player Pipeline** - given a season, this pipeline takes data about a player and outputs the data to a CSV.
 
 
-### Screenshots
+### <a name="screenshots"></a>Screenshots
 
 <div align="center"> 
   <!-- <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" /> -->
 </div>
 
-### Tech Stack
+### <a name="tech-stack"></a>Tech Stack
 
 <details>
   <summary>Client</summary>
@@ -77,14 +76,14 @@ There are 2 main pipelines:
   </ul>
 </details>
 
-### Features
+### <a name="features"></a>Features
 
 - Vew stats for your favorite NHL teams for a particular season.
 - View stats for your favorite NHL players for a particular season.
 - Download stats for your favorite NHL teams for a particular season to a CSV file.
 - Download stats for your favorite NHL teams for a particular season to a CSV file. 
 
-### Environment Variables
+### <a name="environment-variables"></a>Environment Variables
 
 To run this project, you need to add the following environment variables to your `.env` file directly inside the `nhl-etl-pipeline/frontend` folder of this project.
 
@@ -92,16 +91,16 @@ To run this project, you need to add the following environment variables to your
 BUILD_PATH='../backend/frontendBuild'
 ```
 
-The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs assets needed to deploy to production. For more information on deployment, see [Deployment](#triangular_flag_on_post-deployment).
+The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs the frontend assets needed to deploy to production. For more information on deployment, see [Deployment](#triangular_flag_on_post-deployment).
 
-## Getting Started
+## <a name="getting-started"></a>Getting Started
 
-### Prerequisites
+### <a name="prerequisites"></a>Prerequisites
 
-This project uses `npm` as package manager. So, make sure it is installed on your system.
+This project uses Node.js. To install Node.js on your system, see <https://nodejs.org/en/>.
 
 
-### Run Locally
+### <a name="running-locally"></a>Run Locally
 
 Clone the project.
 
@@ -118,18 +117,31 @@ Go to the project directory.
 Install dependencies.
 
 ```bash
-  npm run install
+  npm install
+```
+
+Go to the project `frontend` directory.
+
+```bash
+  cd nhl-etl-pipeline/frontend/
+```
+
+Install frontend dependencies.
+
+```bash
+  npm install
 ```
 
 Start the server.
 
-This command starts the backend server and API on port `5000`. The frontend starts up on port `3000` by default. You can view the frontend in a browser by going to `http://localhost:3000`.
+From the root directory (`nhl-etl-pipeline`) of this project, this command starts the backend server and API on port `5000`. The frontend starts up on port `3000` by default. You can view the frontend in a browser by going to `http://localhost:3000`.
 
 ```bash
+  cd nhl-etl-pipeline
   npm run dev
 ```
 
-### Running Tests
+### <a name="running-tests"></a>Running Tests
 
 To run tests, run the following command in the root directory of this project.
 
@@ -138,7 +150,7 @@ To run tests, run the following command in the root directory of this project.
   npm run test
 ```
 
-###  Deployment
+### <a name="deployment"></a>Deployment
 
 To deploy this project, build the frontend assests for production.
 
@@ -156,26 +168,17 @@ Then, deploy project to Heroku.
   npm run deploy
 ```
 
-## Usage
-
-```javascript
-import Component from 'my-project'
-function App() {
-  return <Component />
-}
-```
-
-## Contributing
+## <a name="contributing"></a>Contributing
 
 Contributions are always welcome!
 
-## Contact
+## <a name="contact"></a>Contact
 
 Phil Stubbs- [@iamPhilStubbs](https://twitter.com/iamPhilStubbs) - philipstubbs13@gmaill.com
 
 Project Link: [https://nhl-etl-pipeline.herokuapp.com/](https://nhl-etl-pipeline.herokuapp.com/)
 
-## Acknowledgements
+## <a name="acknowledgements"></a>Acknowledgements
 
  - [Material UI](https://mui.com/)
  - [react-countup](https://github.com/glennreyes/react-countup)
