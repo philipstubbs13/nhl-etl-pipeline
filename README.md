@@ -10,7 +10,7 @@
   <span> · </span>
     <a href="https://nhl-etl-pipeline.herokuapp.com/">Documentation</a>
   <span> · </span>
-    <a href=https://github.com/philipstubbs13/nhl-etl-pipeline/issues">Report Bug</a>
+    <a href="https://github.com/philipstubbs13/nhl-etl-pipeline/issues">Report Bug</a>
   <span> · </span>
     <a href="https://github.com/philipstubbs13/nhl-etl-pipeline/issues">Request Feature</a>
   </h4>
@@ -33,6 +33,7 @@
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [Issues And Requests](#issues-and-requests)
 
 ## <a name="about-the-project"></a>About the Project
 
@@ -91,7 +92,7 @@ To run this project, you need to add the following environment variables to your
 BUILD_PATH='../backend/frontendBuild'
 ```
 
-The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs the frontend assets needed to deploy to production. For more information on deployment, see [Deployment](#triangular_flag_on_post-deployment).
+The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs the frontend assets needed to deploy to production. For more information on deployment, see [Deployment](#deployment).
 
 ## <a name="getting-started"></a>Getting Started
 
@@ -143,7 +144,7 @@ From the root directory (`nhl-etl-pipeline`) of this project, this command start
 
 ### <a name="running-tests"></a>Running Tests
 
-To run tests, run the following command in the root directory of this project.
+To run tests, run the following command in the root directory (`nhl-etl-pipeline`) of this project.
 
 ```bash
   cd nhl-etl-pipeline
@@ -174,7 +175,7 @@ Contributions are always welcome!
 
 ## <a name="contact"></a>Contact
 
-Phil Stubbs- [@iamPhilStubbs](https://twitter.com/iamPhilStubbs) - philipstubbs13@gmaill.com
+Phil Stubbs- [@iamPhilStubbs](https://twitter.com/iamPhilStubbs) - philipstubbs13@gmail.com
 
 Project Link: [https://nhl-etl-pipeline.herokuapp.com/](https://nhl-etl-pipeline.herokuapp.com/)
 
@@ -185,6 +186,9 @@ Project Link: [https://nhl-etl-pipeline.herokuapp.com/](https://nhl-etl-pipeline
  - [React Query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
  - [awesome-github-profile-readme](https://github.com/abhisheknaiidu/awesome-github-profile-readme)
  - [export-to-csv](https://mui.com/)
+
+## <a name="issues-and-requests"></a>Issues and Requests
+If you find an issue while using the application or have a request, log the issue or request [here](https://github.com/philipstubbs13/nhl-etl-pipeline/issues). These will be addressed in a future code update.
 
 ## TypeScript Resources for this Project
 
