@@ -8,7 +8,9 @@
 <h4>
     <a href="https://nhl-etl-pipeline.herokuapp.com/">View Demo</a>
   <span> · </span>
-    <a href="https://nhl-etl-pipeline.herokuapp.com/">Documentation</a>
+    <a href="https://nhl-etl-pipeline.herokuapp.com/api">API Documentation</a>
+  <span> · </span> 
+  <a href="https://nhl-etl-pipeline.herokuapp.com/about">About</a>
   <span> · </span>
     <a href="https://github.com/philipstubbs13/nhl-etl-pipeline/issues">Report Bug</a>
   <span> · </span>
@@ -21,10 +23,10 @@
 # Table of Contents
 
 - [About the Project](#about-the-project)
-  * [Screenshots](#screenshots)
   * [Tech Stack](#tech-stack)
   * [Features](#features)
   * [Environment Variables](#environment-variables)
+  * [About the API](#api)
 - [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Run Locally](#running-locally)
@@ -44,9 +46,6 @@ There are 2 main pipelines:
 * **Team Pipeline** - given a season, this pipeline takes data about a team and outputs the data to a CSV.
 
 * **Player Pipeline** - given a season, this pipeline takes data about a player and outputs the data to a CSV.
-
-
-### <a name="screenshots"></a>Screenshots
 
 <div align="center"> 
   <!-- <img src="https://placehold.co/600x400?text=Your+Screenshot+here" alt="screenshot" /> -->
@@ -79,7 +78,7 @@ There are 2 main pipelines:
 
 ### <a name="features"></a>Features
 
-- Vew stats for your favorite NHL teams for a particular season.
+- View stats for your favorite NHL teams for a particular season.
 - View stats for your favorite NHL players for a particular season.
 - Download stats for your favorite NHL teams for a particular season to a CSV file.
 - Download stats for your favorite NHL teams for a particular season to a CSV file. 
@@ -93,6 +92,14 @@ BUILD_PATH='../backend/frontendBuild'
 ```
 
 The `BUILD_PATH` environment variable is the path (relative to the root of the project) where the react app outputs the frontend assets needed to deploy to production. For more information on deployment, see [Deployment](#deployment).
+
+### <a name="api"></a> About the API
+
+The data for this project is available for use through an API built using Node.js. Using Node.js, this API extracts team and player data from the NHL API, and then transforms the data into a usable source so that it can be loaded into CSV files. 
+
+The code for the API is available within the `backend` directory of this project.
+
+For more information on the endpoints used for this project, see the [API Documentation](https://nhl-etl-pipeline.herokuapp.com/).
 
 ## <a name="getting-started"></a>Getting Started
 
@@ -190,7 +197,7 @@ Project Link: [https://nhl-etl-pipeline.herokuapp.com/](https://nhl-etl-pipeline
 ## <a name="issues-and-requests"></a>Issues and Requests
 If you find an issue while using the application or have a request, log the issue or request [here](https://github.com/philipstubbs13/nhl-etl-pipeline/issues). These will be addressed in a future code update.
 
-## TypeScript Resources for this Project
+## TypeScript Resources
 
 * <https://stackoverflow.com/questions/41495658/use-custom-build-output-folder-when-using-create-react-app>
 * <https://superuser.com/questions/1421600/heroku-error-enoent-no-such-file-or-directory-stat-app-client-build-index-h>
