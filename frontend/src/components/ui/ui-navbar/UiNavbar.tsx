@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { Button, Container, Typography, Toolbar, Box, AppBar } from '@mui/material';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import { Link as RouterLink } from 'react-router-dom';
 
-const pages = ['Home', 'About', 'API'];
+const pages = [
+  { name: 'Home', route: '/' },
+  { name: 'About', route: '/about' },
+  { name: 'API', route: '/api' }
+];
 
 export const UiNavBar: React.FC = () => {
   return (
@@ -13,8 +18,8 @@ export const UiNavBar: React.FC = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -29,10 +34,12 @@ export const UiNavBar: React.FC = () => {
           <Box sx={{ display: { display: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 sx={{ my: 2, mr: 2, color: 'white', display: 'block' }}
+                component={RouterLink}
+                to={page.route}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
