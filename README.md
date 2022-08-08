@@ -99,7 +99,7 @@ The data for this project is available for use through an API built using Node.j
 
 The code for the API is available within the `backend` directory of this project.
 
-For more information on the endpoints used for this project, see the [API Documentation](https://nhl-etl-pipeline.herokuapp.com/).
+For more information on the endpoints used for this project, see the [API Documentation](https://nhl-etl-pipeline.herokuapp.com/apinpm).
 
 ## <a name="getting-started"></a>Getting Started
 
